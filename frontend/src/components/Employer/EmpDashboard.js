@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UploadedInternships from "./UploadedInternships";
 import UploadedJobs from "./UploadedJobs";
 import axios from "../../baseurl/axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import Header from "../Header";
 
@@ -20,7 +20,6 @@ const EmpDashboard = () => {
   const ifUserExist = async () => {
     try {
       const res = await axios.get("/getempdetails/" + id);
-      console.log(res);
       if (res.data.length < 1) {
         nav("/employer/profile");
       } else {
@@ -37,7 +36,6 @@ const EmpDashboard = () => {
       if (res.data.length < 1) {
         nav("/employer/company");
       } else {
-        console.log("hello");
         setCmpId(res.data[0].id);
         localStorage.setItem("cmp_id", res.data[0].id);
         setLoading(false);
@@ -87,6 +85,7 @@ const EmpDashboard = () => {
               Jobs
             </button>
           </div>
+          <Link to={'/jobs/form'}><button className="hidden sm:block absolute right-10 top-20 bg-emerald-400 p-2 font-bold rounded-md shadow-lg">Add +</button></Link>
           <div>
             {button ? (
               <UploadedInternships id={cmpId} />

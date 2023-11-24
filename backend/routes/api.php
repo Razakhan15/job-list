@@ -8,6 +8,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Models\Internship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,4 @@ Route::post('/loginstudent', [StudentController::class, 'authenticate']);
 Route::get('/internshiplists', [InternListingController::class, 'index']);
 Route::get('/internship/detail/{id}', [InternListingController::class, 'show']);
 Route::post('/logoutemp', [StudentController::class, 'logout']);
+Route::get('/search/{key}', [InternListingController::class, 'search']);
