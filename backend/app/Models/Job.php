@@ -23,4 +23,8 @@ class Job extends Model
         "assessment1",
         "assessment2",
     ];
+    public function cmp()
+    {
+        return $this->belongsTo(Company_detail::class, 'cmp_id');
+    }
 }

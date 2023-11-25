@@ -6,9 +6,10 @@ import axios from "../../baseurl/axios";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import Header from "../Header";
 
-const GigsList = () => {
+const JobList = () => {
   const nav = useNavigate();
   const [data, setData] = useState([]);
+  console.log(data)
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const GigsList = () => {
 
   const displayData = async () => {
     try {
-      const res = await axios.get("/internshiplists");
+      const res = await axios.get("/joblists");
       setData(res.data);
       setLoading(false);
     } catch (error) {
@@ -39,11 +40,11 @@ const GigsList = () => {
         </div>
       ) : (
         <>
-        <Header/>
-        <Link to={'/jobs'} className="absolute right-10 top-20 bg-emerald-300 p-2 rounded-lg font-bold shadow-lg">Jobs</Link>
+          <Header />
+          <Link to={'/internships'} className="absolute right-10 top-20 bg-emerald-300 p-2 rounded-lg font-bold shadow-lg">Internships</Link>
           <div className="relative">
             <p className="hidden lg:block absolute right-1/3 top-5 xl:top-36 text-3xl font-medium">
-              {data.length} Total Interships
+              {data.length} Total Jobs
             </p>
           </div>
           <div className="lg:p-10 xl:p-52 max-w-screen-2xl flex justify-evenly 2xl:m-auto">
@@ -74,7 +75,7 @@ const GigsList = () => {
                       <div className="space-y-5">
                         <hr className=" border-gray-200 mt-5" />
                         <div className="relative h-8">
-                          <Link to={"/internship/detail/" + item.id}>
+                          <Link to={"/jobs/detail/" + item.id}>
                             <button className="border p-2 border-gray-400 absolute bottom-0 right-0 transition ease-in-out delay-100 hover:bg-gray-800 hover:text-white">
                               View Details
                             </button>
@@ -92,4 +93,4 @@ const GigsList = () => {
   );
 };
 
-export default GigsList;
+export default JobList;

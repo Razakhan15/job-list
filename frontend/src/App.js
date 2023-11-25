@@ -13,6 +13,8 @@ import Login from "./components/students/Login";
 import Intern from "./components/StoreListings/Intern";
 import Protected from "./components/Protected";
 import Home from "./components/Home.js";
+import JobList from "./components/ShowListings/JobList.js";
+import JobDetails from "./components/ShowListings/JobDetails.js";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/internships" element={<GigsList />} />
           <Route path="/internship/detail/:id" element={<ListingDetails />} />
+          <Route path="/jobs" element={<JobList />} />
+          <Route path="/jobs/detail/:id" element={<JobDetails />} />
         </Routes>
       </Router>
     </>
